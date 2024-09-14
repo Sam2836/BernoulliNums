@@ -10,28 +10,24 @@
 
 
 
-v = 2   # Begins at the second derivative (i.e. "second iteration")
+iteration = 1       # Begins at the first derivative (i.e. "first iteration")
 
-exp = [0, 2, -2]    # Values for iteration 2 are preloaded
-xexp = [0, 1, 1]    # Everything is effectively 1-indexed (although ce^0 and cxe^0 are simply constant and linear terms respectively)
+exp_list = [0, 1]   # Values for iteration 1 are preloaded
+xexp_list = [0, -1] # Everything is effectively 1-indexed (although ce^0 and cxe^0 are simply constant and linear terms respectively)
 
-newexp = list(range(3))
-newxexp = list(range(3))
+def deriv_iterate(n: int,
+                  exp: list,
+                  xexp: list,
+                  ) -> list:
+    
+    newexp = list(range(v+1))
+    newxexp = list(range(v+1))
+    
+    newexp[0] = 0
+    newxexp[0] = 0
+    
+    
 
-def deriv_iterate() -> None:
-    global exp
-    global xexp
-    global v
+    n+=1
     
-    for n in range(1, len(exp)):
-        newexp[n] = xexp[n-1] + exp[n-1] * (n-v-2) - xexp[n] - n * exp[n]
-        newxexp[n] = xexp[n-1] * (n-v-2) - n * xexp[n]
-        
-    newexp.append(xexp[n] + exp[n] * (n-v-1))
-    newxexp.append(xexp[n] * (n-v-1))
-    
-    exp = newexp
-    xexp = newxexp
-    v+=1
-    
-    return
+    return [newexp, newxexp, n]
