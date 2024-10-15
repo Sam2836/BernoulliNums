@@ -1,3 +1,3 @@
 # BernoulliNums
-Produces Bernoulli numbers via use of a generating function and evaluation of a limit
-(https://en.wikipedia.org/wiki/Bernoulli_number) from the generating function \frac{x}{e^{x}-1}
+Produces Bernoulli numbers as the taylor coefficients of the generating function \frac{x}{e^{x}-1}
+(idea implemented from https://en.wikipedia.org/wiki/Bernoulli_number)
